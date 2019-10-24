@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             width: 125,
         },
-        border: '1px dashed green',
+        border: `1px dashed ${theme.palette.color.green}`,
         backgroundColor: 'transparent',
     },
 }));

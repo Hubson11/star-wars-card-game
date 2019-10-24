@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
     selectedCard: {
-        outline: '3px solid green',
+        outline: `3px solid ${theme.palette.color.green}`,
         outlineOffset: '5px',
     },
     fakeCard: {
-        backgroundColor: 'gray',
+        backgroundColor: theme.palette.color.gray,
         borderRadius: '8px',
         cursor: 'pointer',
         display: 'flex',

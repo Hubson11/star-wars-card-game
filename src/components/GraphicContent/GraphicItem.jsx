@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     selectedOffset: {
         outlineOffset: '10px',
-        outline: '5px solid silver',
+        outline: `5px solid ${theme.palette.color.silver}`,
     },
     graphicTitle: {
         textAlign: 'center',

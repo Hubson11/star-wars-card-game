@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import * as cardsActions from '../redux/actions/cardsActions';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     constainer: {
         justifyContent: 'center',
         margin: '20px 0',
@@ -25,10 +25,10 @@ const useStyles = makeStyles({
         fontSize: 20,
         margin: '10px auto 0',
         textAlign: 'center',
-        color: 'green',
+        color: theme.palette.color.green,
         fontWeight: 700,
     },
-});
+}));
 
 const PlayContent = ({ player1Nickname, fetchCards, loading, activePlayer }) => {
     const classes = useStyles();

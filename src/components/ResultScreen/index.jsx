@@ -25,13 +25,13 @@ const useStyles = makeStyles(theme => ({
         margin: '0 auto',
     },
     card: {
-        border: '1px dashed green',
+        border: `1px dashed ${theme.palette.color.green}`,
         backgroundColor: 'transparent',
     },
     scoreContent: {
         margin: '15px auto',
         fontSize: 20,
-        color: 'green',
+        color: theme.palette.color.green,
         [theme.breakpoints.down('sm')]: {
             margin: '5px auto',
             fontSize: 12,

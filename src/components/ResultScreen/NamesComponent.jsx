@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
     winLabel: {
         fontSize: 20,
-        color: 'green',
+        color: theme.palette.color.green,
         [theme.breakpoints.down('sm')]: {
             fontSize: 14,
         },

@@ -15,11 +15,11 @@ const useStyles = makeStyles(theme => ({
         },
     },
     footer: {
-        borderTop: '1px solid gray',
+        borderTop: `1px solid ${theme.palette.color.gray}`,
         padding: '15px 0',
         textAlign: 'center',
-        backgroundColor: 'silver',
-        color: 'gray',
+        backgroundColor: theme.palette.color.silver,
+        color: theme.palette.color.gray,
         fontSize: 16,
         [theme.breakpoints.down('sm')]: {
             fontSize: 12,

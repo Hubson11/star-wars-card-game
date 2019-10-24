@@ -8,7 +8,7 @@ import { CustomCard } from '../CustomCard';
 import { FakeCard } from './FakeCard';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     centerItem: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -17,10 +17,10 @@ const useStyles = makeStyles({
     scoreContent: {
         margin: '15px auto',
         fontSize: 20,
-        color: 'green',
+        color: theme.palette.color.green,
         textAlign: 'center',
     },
-});
+}));
 
 export const UserResult = ({ winCount, pickedCard }) => {
     const classes = useStyles();

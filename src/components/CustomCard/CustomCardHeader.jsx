@@ -20,8 +20,8 @@ const useStyles = makeStyles(theme => ({
         },
     },
     headerCard: {
-        borderBottom: '1px solid gray',
-        backgroundColor: 'silver',
+        borderBottom: `1px solid ${theme.palette.color.lightGray}`,
+        backgroundColor: theme.palette.color.silver,
     },
     title: {
         fontSize: 18,
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     subTitle: {
-        color: 'gray',
+        color: theme.palette.color.gray,
         fontSize: 16,
         [theme.breakpoints.down('sm')]: {
             fontSize: 12,

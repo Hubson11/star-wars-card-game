@@ -20,7 +20,7 @@ export const history = createBrowserHistory();
 
 const useStyles = makeStyles(theme => ({
   container: {
-    backgroundColor: 'darkblue',
+    backgroundColor: theme.palette.color.lightblue,
     padding: '50px 0',
     minWidth: 400,
     [theme.breakpoints.down('sm')]: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   },
   descriptionLabel: {
     fontSize: 16,
-    color: 'silver',
+    color: theme.palette.color.silver,
     [theme.breakpoints.down('sm')]: {
       fontSize: 12,
     },

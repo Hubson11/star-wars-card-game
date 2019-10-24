@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 const useStyles = makeStyles(theme => ({
     key: {
         fontSize: 14,
-        color: 'silver',
+        color: theme.palette.color.silver,
         textAlign: 'center',
         [theme.breakpoints.down('sm')]: {
             fontSize: 10,
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
     value: {
         fontSize: 16,
-        color: 'gray',
+        color: theme.palette.color.gray,
         textAlign: 'center',
         [theme.breakpoints.down('sm')]: {
             fontSize: 12,

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
     disabled: {
         backgroundColor: theme.palette.color.silver,
-        color: 'gray',
+        color: theme.palette.color.gray,
     },
     titleCont: {
         margin: '20px auto 40px',
