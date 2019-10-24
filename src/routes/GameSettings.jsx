@@ -8,6 +8,8 @@ import {
 import { GraphicContent } from '../components/GraphicContent';
 import { history } from '../App';
 import { SettingsForm } from '../components/SettingsForm';
+import * as namesActions from '../redux/actions/namesActions';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
     container: {
@@ -40,19 +42,20 @@ const useStyles = makeStyles({
     },
 });
 
-export const GameSettings = () => {
+const GameSettings = ({ setPlayerName }) => {
     const [selectedGame, setSelectedGame] = useState('');
     const [player1Nick, setPlayer1Nick] = useState('');
     const [player2Nick, setPlayer2Nick] = useState('');
+    
     const classes = useStyles()
 
     const onClick = () => {
         const data = {
             type: selectedGame,
-            player1: player1Nick, 
-            player2: player2Nick,
+            player1Nickname: player1Nick, 
+            player2Nickname: player2Nick,
         }
-        localStorage.setItem('gameData', JSON.stringify(data))
+        setPlayerName(data)
         history.push('/play')
     }
     const renderButton = () => (
@@ -91,3 +94,11 @@ export const GameSettings = () => {
         </Grid>
     )
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setPlayerName: (name, type) => dispatch(namesActions.setPlayerName(name, type))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(GameSettings)

@@ -13,8 +13,8 @@ import {
   Route,
 } from "react-router-dom";
 import { LandingPage } from './routes/LandingPage';
-import { GameSettings } from './routes/GameSettings';
-import { PlayContent } from './routes/PlayContent';
+import GameSettings from './routes/GameSettings';
+import PlayContent from './routes/PlayContent';
 
 export const history = createBrowserHistory();
 

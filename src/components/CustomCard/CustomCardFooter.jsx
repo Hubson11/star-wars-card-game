@@ -56,7 +56,7 @@ export const CustomCardFooter = ({ mass, created }) => {
                 {mass === 'unknown' ? '0' : mass}
             </Typography>
             <Typography className={classes.createdValue}>
-                Created: {created.slice(0, 10)}
+                Created: {created ? created.slice(0, 10) : 'None'}
             </Typography>
         </Grid>
     )

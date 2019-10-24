@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
     Grid,
     Typography,
     makeStyles,
 } from '@material-ui/core';
-import { ResultScreen } from '../components/ResultScreen';
-import { GamePanel } from '../components/GamePanel';
+import ResultScreen from '../components/ResultScreen';
+import GamePanel from '../components/GamePanel';
 import { history } from '../App';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import * as cardsActions from '../redux/actions/cardsActions';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     constainer: {
@@ -27,44 +29,19 @@ const useStyles = makeStyles({
     },
 });
 
-export const PlayContent = () => {
-    const [player1Nick, setPlayer1Nick] = useState('');
-    const [player2Nick, setPlayer2Nick] = useState('');
-    const [pickedCard1, setPickedCard1] = useState(null);
-    const [pickedCard2, setPickedCard2] = useState(null);
-    const [activePlayer, setActivePlayer] = useState('1');
-    const [player1CardsData, setPlayer1CardsData] = useState(null)
-    const [player2CardsData, setPlayer2CardsData] = useState(null)
-    const [loading, setLoading] = useState(true)
-
-    const getRandom = () => Math.floor(Math.random() * 7) + 1
-
-    async function fetchData(){
-        const randomPlayer1 = getRandom()
-        await axios.get(`https://swapi.co/api/people/?page=${randomPlayer1}`)
-        .then(resp => {
-            setPlayer1CardsData(resp.data.results)
-        })
-        const randomPlayer2 = getRandom()
-        await axios.get(`https://swapi.co/api/people/?page=${randomPlayer2}`)
-        .then(resp => {
-            setPlayer2CardsData(resp.data.results)
-            setLoading(false)
-        })
-    }
+const PlayContent = ({ player1Nickname, fetchCards, loading, activePlayer }) => {
+    const classes = useStyles();
 
     useEffect(() => {
-        fetchData()
-        const data = JSON.parse(localStorage.getItem('gameData'))
-        if(!data){
+        if(!(player1Nickname.length > 0) ){
             history.push('/game')
-        } else {
-            setPlayer1Nick(data.player1)
-            setPlayer2Nick(data.player2 ? data.player2 : 'Computer')
-        }
+        } 
+        fetchCards(1)
+        fetchCards(2)
     }, [])
 
-    const classes = useStyles();
+    if(loading) return <Grid>Loading...</Grid>
+
 
     const renderDescription = () => (
         <Grid container>
@@ -76,29 +53,34 @@ export const PlayContent = () => {
         </Grid>
     )
 
-    if(loading) return <Grid>Loading...</Grid>
-
     return(
         <Grid container className={classes.container}>
-            <ResultScreen 
-                pickedCardPlayer1={pickedCard1}
-                pickedCardPlayer2={pickedCard2}
-                setPickedCard1={setPickedCard1}
-                setPickedCard2={setPickedCard2}
-                player1={player1Nick}
-                player2={player2Nick}
-            />
+            <ResultScreen />
             {renderDescription()}
-            <GamePanel
-                setActivePlayer={setActivePlayer}
-                setPickedCard1={setPickedCard1}
-                setPickedCard2={setPickedCard2}
-                activePlayer={activePlayer}
-                pickedCard1={pickedCard1}
-                player2={player2Nick}
-                data1={player1CardsData}
-                data2={player2CardsData}
-            />
+            <GamePanel />
         </Grid>
     )
 }
+
+PlayContent.propTypes = {
+    fetchCards: PropTypes.func.isRequired,
+    player1Nickname: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
+    activePlayer: PropTypes.string.isRequired,
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCards: (id) => dispatch(cardsActions.fetchCards(id)),
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        player1Nickname: state.namesReducer.player1Nickname,
+        loading: state.cardsReducer.loading,
+        activePlayer: state.cardsReducer.activePlayer,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayContent)

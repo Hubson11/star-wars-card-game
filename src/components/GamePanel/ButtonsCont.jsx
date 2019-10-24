@@ -4,44 +4,13 @@ import {
     Button,
     makeStyles,
     Typography,
-    Card,
 } from '@material-ui/core';
-import clsx from 'clsx';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as cardsActions from '../redux/actions/cardsActions';
 
 const useStyles = makeStyles(theme => ({
-    contentWrapper: {
-        justifyContent: 'center',
-        margin: '20px auto',
-        padding: 10,
-    },
-    contentGrid: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    selectedCard: {
-        outline: '3px solid green',
-        outlineOffset: '5px',
-    },
-    fakeCard: {
-        backgroundColor: 'gray',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'row',
-        height: '50px',
-        width: '40px',
-        margin: '10px',
-        [theme.breakpoints.up('md')]: {
-            margin: '10px',
-            height: '140px',
-            width: '100px',
-        },
-    },
     buttonCont: {
       fontSize: 18,
       borderRadius: '8px',
@@ -60,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const GamePanel = ({ selectCard, deleteCard, player2Nickname, selectedCard1, cards1, cards2, activePlayer, setActive }) => {
+const ButtonsCont = ({ selectCard, deleteCard, player2Nickname, selectedCard1, cards1, cards2, activePlayer, setActive }) => {
     const [selectedFakeCard, setSelectedFakeCard] = useState(0)
     const classes = useStyles();
 
@@ -87,27 +56,7 @@ const GamePanel = ({ selectCard, deleteCard, player2Nickname, selectedCard1, car
         setSelectedFakeCard('')
     }
 
-    const setActiveFakeCard = (card) => {
-        setSelectedFakeCard(card)
-    }
-
     return (
-        <Grid container>
-            <Grid container item xs={12} className={classes.contentWrapper}>
-                <Grid container item xs={12} className={classes.contentGrid}>
-                    <Grid container style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} item xs={12}>
-                        {cards.map(card => (
-                            <Grid key={card.name}>
-                                <Card 
-                                    id={card.name}
-                                    className={clsx(selectedFakeCard.name === card.name && classes.selectedCard, classes.fakeCard)}
-                                    onClick={() => setActiveFakeCard(card)}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Grid>
-            </Grid>
             <Grid container className={classes.buttonCont} item lg={4} onClick={pickCard}>
                 {
                     cards.length ?
@@ -116,17 +65,18 @@ const GamePanel = ({ selectCard, deleteCard, player2Nickname, selectedCard1, car
                     </Button>
                     :
                     <Link to="/game">
-                        <Typography>
-                            Try again!
-                        </Typography>
+                        <Button className={classes.playButton}>
+                            <Typography>
+                                Try again!
+                            </Typography>
+                        </Button>
                     </Link>
                 }
             </Grid>
-        </Grid>
     )
 }
 
-GamePanel.propTypes = {
+ButtonsCont.propTypes = {
     deleteCard: PropTypes.func.isRequired,
     selectCard: PropTypes.func.isRequired,
     setActive: PropTypes.func.isRequired,
@@ -161,7 +111,7 @@ GamePanel.propTypes = {
     }),
 }
 
-GamePanel.defaultProps = {
+ButtonsCont.defaultProps = {
     selectedCard1: {
         height: '',
         birthYear: '',
@@ -191,4 +141,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GamePanel)
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsCont)
