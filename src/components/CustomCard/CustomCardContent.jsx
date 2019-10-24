@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 export const CustomCardContent = ({ height, birthYear, eyeColor, hairColor, skinColor }) => {
     
-    const renderHeader = () => (
+    const renderLeft = () => (
         <Grid item xs={6}>
             <Typography className={classes.key}>
                 Height
@@ -45,33 +45,41 @@ export const CustomCardContent = ({ height, birthYear, eyeColor, hairColor, skin
         </Grid>
     )
 
+    const renderRight = () => (
+        <Grid item xs={6} >
+            <Typography className={classes.key}>
+                Eye color
+            </Typography>
+            <Typography className={classes.value}>
+                {eyeColor}
+            </Typography>
+            <Typography className={classes.key}>
+                Hair color
+            </Typography>
+            <Typography className={classes.value}>
+                {hairColor}
+            </Typography>
+        </Grid>
+    )
+
+    const renderBottom = () => (
+        <Grid item xs={12}>
+            <Typography className={classes.key}>
+                Birth year
+            </Typography>
+            <Typography className={classes.value}>
+                {birthYear}
+            </Typography>
+        </Grid>
+    )
+
     const classes = useStyles();
     return(
         <CardContent>
             <Grid container>
-                {renderHeader()}
-                <Grid item xs={6} >
-                    <Typography className={classes.key}>
-                        Eye color
-                    </Typography>
-                    <Typography className={classes.value}>
-                        {eyeColor}
-                    </Typography>
-                    <Typography className={classes.key}>
-                        Hair color
-                    </Typography>
-                    <Typography className={classes.value}>
-                        {hairColor}
-                    </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography className={classes.key}>
-                        Birth year
-                    </Typography>
-                    <Typography className={classes.value}>
-                        {birthYear}
-                    </Typography>
-                </Grid>
+                {renderLeft()}
+                {renderRight()}
+                {renderBottom()}
             </Grid>
         </CardContent>
 )}
