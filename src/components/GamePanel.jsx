@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const GamePanel = ({ selectCard, deleteCard, player2Nickname, selectedCard1, cards1, cards2, activePlayer, setActive }) => {
-    const [selectedFakeCard, setSelectedFakeCard] = useState(0)
+    const [selectedFakeCard, setSelectedFakeCard] = useState({ name: ''})
     const classes = useStyles();
 
     useEffect(() => {

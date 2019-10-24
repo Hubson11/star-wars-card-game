@@ -53,7 +53,7 @@ const ButtonsCont = ({ selectCard, deleteCard, player2Nickname, selectedCard1, c
             selectCard(selectedFakeCard, 2)
             setActive('1')
         }
-        setSelectedFakeCard('')
+        setSelectedFakeCard(null)
     }
 
     return (

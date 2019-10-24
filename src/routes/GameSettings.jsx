@@ -35,6 +35,7 @@ const useStyles = makeStyles({
     titleLabel: {
         fontSize: 18,
         textAlign: 'center',
+        color: 'silver'
     },
     buttonWrapper: {
         justifyContent: 'center',

@@ -3,6 +3,7 @@ import {
     Grid,
     Typography,
     makeStyles,
+    CircularProgress,
 } from '@material-ui/core';
 import ResultScreen from '../components/ResultScreen';
 import GamePanel from '../components/GamePanel';
@@ -40,7 +41,7 @@ const PlayContent = ({ player1Nickname, fetchCards, loading, activePlayer }) => 
         fetchCards(2)
     }, [])
 
-    if(loading) return <Grid>Loading...</Grid>
+    if(loading) return <Grid style={{ textAlign: 'center' }}><CircularProgress /></Grid>
 
 
     const renderDescription = () => (
