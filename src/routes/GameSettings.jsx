@@ -11,7 +11,7 @@ import { SettingsForm } from '../components/SettingsForm';
 import * as namesActions from '../redux/actions/namesActions';
 import { connect } from 'react-redux';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         justifyContent: 'center',
         margin: '0 auto' 
@@ -22,11 +22,11 @@ const useStyles = makeStyles({
       textDecoration: 'none',
     },
     playButton: {
-        color: '#FFFFFF',
-        backgroundColor: 'green',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.green,
     },
     disabled: {
-        backgroundColor: 'silver',
+        backgroundColor: theme.palette.color.silver,
         color: 'gray',
     },
     titleCont: {
@@ -35,13 +35,13 @@ const useStyles = makeStyles({
     titleLabel: {
         fontSize: 18,
         textAlign: 'center',
-        color: 'silver'
+        color: theme.palette.color.white
     },
     buttonWrapper: {
         justifyContent: 'center',
         textAlign: 'center'
     },
-});
+}));
 
 const GameSettings = ({ setPlayerName }) => {
     const [selectedGame, setSelectedGame] = useState('');

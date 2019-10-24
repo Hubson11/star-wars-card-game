@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     graphicTitle: {
         textAlign: 'center',
         fontSize: 20,
-        color: '#FFFFFF',
+        color: theme.palette.color.white,
     },
     graphicItemCont: {
         margin: '25px auto',

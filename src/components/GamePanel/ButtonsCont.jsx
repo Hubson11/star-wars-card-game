@@ -20,12 +20,12 @@ const useStyles = makeStyles(theme => ({
       margin: '0 auto',
     },
     instructionButton: {
-        color: '#000000',
-        backgroundColor: 'silver',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.silver,
     },
     playButton: {
-        color: '#FFFFFF',
-        backgroundColor: 'green',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.green,
     },
 }));
 

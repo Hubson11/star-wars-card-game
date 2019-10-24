@@ -6,20 +6,21 @@ import {
 import PropTypes from 'prop-types';
 import { InputForm } from './InputForm';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         flexDirection: 'column', 
         justifyContent: 'center', 
         margin: '20px auto',
+        color: theme.palette.color.white,
     },
     centerGrid: {
         margin: '10px auto',
     },
     input: {
-        color: '#FFFFFF',
-        backgroundColor: 'silver',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.silver,
     }
-});
+}));
 
 export const SettingsForm = ({ selectedGame, player1Nick, player2Nick, setPlayer1Nick, setPlayer2Nick }) => {
     const classes = useStyles()
@@ -27,7 +28,8 @@ export const SettingsForm = ({ selectedGame, player1Nick, player2Nick, setPlayer
     return (
         <Grid container className={classes.container}>
             {selectedGame !== '' &&
-                <InputForm 
+                <InputForm
+                    className={classes.input}
                     playerNick={player1Nick}
                     setPlayerNick={setPlayer1Nick}
                     playerNumber={1}
@@ -35,7 +37,8 @@ export const SettingsForm = ({ selectedGame, player1Nick, player2Nick, setPlayer
             }
             {selectedGame === 'multiplayer' &&
                 <InputForm 
-                    playerNick={player2Nick}
+                className={classes.input}
+                playerNick={player2Nick}
                     setPlayerNick={setPlayer2Nick}
                     playerNumber={2}
                 />

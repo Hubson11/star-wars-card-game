@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 20,
-    color: '#FFFFFF',
+    color: theme.palette.color.white,
     fontWeight: 700,
     [theme.breakpoints.down('sm')]: {
       fontSize: 14,

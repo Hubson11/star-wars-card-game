@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     gameModeLabel: {
         fontSize: 20,
         textAlign: 'center',
-        color: '#FFFFFF',
+        color: theme.palette.color.white,
         margin: '10px auto',
     }
 }));

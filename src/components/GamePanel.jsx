@@ -51,11 +51,11 @@ const useStyles = makeStyles(theme => ({
       margin: '0 auto',
     },
     instructionButton: {
-        color: '#000000',
+        color: theme.palette.color.black,
         backgroundColor: 'silver',
     },
     playButton: {
-        color: '#FFFFFF',
+        color: theme.palette.color.main,
         backgroundColor: 'green',
     },
 }));

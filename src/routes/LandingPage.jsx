@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         maxWidth: '1170px',
         margin: '0 auto',
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         margin: '0 auto',
         textAlign: 'center',
         padding: '20px',
-        color: "lightgray",
+        color: theme.palette.color.white,
     },
     header: {
       textAlign: 'center',
@@ -39,10 +39,10 @@ const useStyles = makeStyles({
       textDecoration: 'none',
     },
     playButton: {
-        color: '#FFFFFF',
-        backgroundColor: 'green',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.green,
     }
-});
+}));
 
 export const LandingPage = () => {
     const classes = useStyles();

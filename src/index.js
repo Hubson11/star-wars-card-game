@@ -9,13 +9,14 @@ import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material
 
 let theme = createMuiTheme({
     palette: {
-        primary: {
+        color: {
             white: '#FFFFFF',
-            main: '#cfd8dc',
+            black: '#000000',
+            silver:  '#e0e0e0',
             green: '#64dd17',
-            red: '#d50000',
-            gray: '#eceff1',
-            darkGray: '#b0bec5',
+            gray: '#9e9e9e',
+            darkGray: '#616161',
+            lightGray: '#eeeeee',
         },
     },
 })

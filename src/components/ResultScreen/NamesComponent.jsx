@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     nicknameLabel: {
         textAlign: 'center',
         fontSize: 28,
-        color: '#FFFFFF',
+        color: theme.palette.color.white,
         fontWeight: 700,
         letterSpacing: 5,
         [theme.breakpoints.down('sm')]: {

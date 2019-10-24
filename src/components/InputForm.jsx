@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         flexDirection: 'column', 
         justifyContent: 'center', 
@@ -17,10 +17,10 @@ const useStyles = makeStyles({
         margin: '10px auto',
     },
     input: {
-        color: '#FFFFFF',
-        backgroundColor: 'silver',
+        color: theme.palette.color.white,
+        backgroundColor: theme.palette.color.sillver,
     }
-});
+}));
 
 export const InputForm = ({ playerNick, setPlayerNick, playerNumber }) => {
     const classes = useStyles()
